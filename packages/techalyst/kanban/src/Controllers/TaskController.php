@@ -29,13 +29,7 @@ class TaskController extends Controller
                         'title' => view('item')->with('model',$item)->render(),
                         'taskname' => $item->taskname,
                         'remark' => $item->remark,
-                        'name' => $item->name,
-                        'gender' => $item->gender,
-                        'country' => $item->country,
-                        'agency' => $item->agency,
                         'position' => $item->position,
-                        'phone' => $item->phone,
-                        'email' => $item->email,
                     ];
                 }
                 $board_results[] = [
@@ -48,8 +42,6 @@ class TaskController extends Controller
 
             $data = collect([
                 'boards' => $board_results,
-                'country_options' => TaskItem::select('country')->groupBy('country')->pluck('country'),
-                'agency_options' => TaskItem::select('agency')->groupBy('agency')->pluck('agency'),
                 'position_options' => TaskItem::select('position')->groupBy('position')->pluck('position')
             ]);
 
